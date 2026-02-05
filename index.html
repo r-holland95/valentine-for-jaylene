@@ -518,10 +518,112 @@
             height: 20px;
         }
 
-        /* Responsive */
-        @media (max-width: 480px) {
+        /* Responsive - Tablet */
+        @media (max-width: 768px) {
+            .container {
+                padding: 1.5rem;
+            }
+
             .card {
-                padding: 2rem 1.5rem;
+                padding: 2.5rem 2rem;
+                border-radius: 25px;
+            }
+
+            .xaden-illustration {
+                width: 250px;
+                height: 290px;
+            }
+
+            .response-yes {
+                font-size: 1.7rem;
+            }
+
+            .response-yes .big-heart svg {
+                width: 70px;
+                height: 70px;
+            }
+        }
+
+        /* Responsive - Mobile */
+        @media (max-width: 480px) {
+            .container {
+                padding: 1rem;
+                justify-content: flex-start;
+                padding-top: 2rem;
+            }
+
+            .title {
+                font-size: 1.6rem;
+                margin-bottom: 0.75rem;
+            }
+
+            .card {
+                padding: 1.75rem 1.25rem;
+                border-radius: 20px;
+                max-width: 100%;
+            }
+
+            .corner-decor {
+                width: 22px;
+                height: 22px;
+            }
+
+            .corner-decor.top-left {
+                top: 10px;
+                left: 12px;
+            }
+
+            .corner-decor.bottom-right {
+                bottom: 10px;
+                right: 12px;
+            }
+
+            .illustration-container {
+                margin-bottom: 1.5rem;
+            }
+
+            .xaden-illustration {
+                width: 200px;
+                height: 240px;
+            }
+
+            .heart-decoration:nth-child(1) {
+                width: 28px;
+                height: 28px;
+                left: 12%;
+            }
+
+            .heart-decoration:nth-child(2) {
+                width: 22px;
+                height: 22px;
+                right: 8%;
+            }
+
+            .heart-decoration:nth-child(3) {
+                width: 25px;
+                height: 25px;
+                left: 5%;
+            }
+
+            .heart-decoration:nth-child(4) {
+                width: 30px;
+                height: 30px;
+                right: 5%;
+            }
+
+            .heart-decoration:nth-child(5) {
+                width: 18px;
+                height: 18px;
+                left: 0%;
+            }
+
+            .question {
+                font-size: 1.3rem;
+                margin-bottom: 1.5rem;
+            }
+
+            .question .name {
+                font-size: 1.8rem;
             }
 
             .heart-display {
@@ -541,6 +643,57 @@
             .btn {
                 width: 100%;
                 justify-content: center;
+                padding: 1rem 2rem;
+                font-size: 1.15rem;
+                min-height: 54px;
+            }
+
+            .response-yes {
+                font-size: 1.3rem;
+                line-height: 1.5;
+            }
+
+            .response-yes .big-heart {
+                margin: 1rem auto;
+            }
+
+            .response-yes .big-heart svg {
+                width: 60px;
+                height: 60px;
+            }
+
+            .sparkle-row svg {
+                width: 32px;
+                height: 32px;
+            }
+
+            .sparkle-row .sparkle {
+                width: 20px;
+                height: 20px;
+            }
+
+            .response-no {
+                font-size: 1.15rem;
+            }
+
+            .try-again-btn {
+                padding: 0.9rem 1.8rem;
+                font-size: 0.95rem;
+                min-height: 48px;
+            }
+
+            .signature {
+                margin-top: 1.5rem;
+                font-size: 0.95rem;
+            }
+
+            .signature svg {
+                width: 16px;
+                height: 16px;
+            }
+
+            .floating-heart {
+                opacity: 0.3;
             }
 
             @keyframes orbit {
@@ -556,6 +709,155 @@
                     transform: rotate(360deg) translateX(70px) rotate(-360deg) scale(0.8);
                     opacity: 0.6;
                 }
+            }
+        }
+
+        /* Extra small devices */
+        @media (max-width: 360px) {
+            .container {
+                padding: 0.75rem;
+                padding-top: 1.5rem;
+            }
+
+            .title {
+                font-size: 1.4rem;
+            }
+
+            .card {
+                padding: 1.5rem 1rem;
+            }
+
+            .xaden-illustration {
+                width: 180px;
+                height: 220px;
+            }
+
+            .question .name {
+                font-size: 1.6rem;
+            }
+
+            .question {
+                font-size: 1.15rem;
+            }
+
+            .response-yes {
+                font-size: 1.1rem;
+            }
+        }
+
+        /* Touch device optimizations */
+        @media (hover: none) and (pointer: coarse) {
+            .btn-yes:hover {
+                transform: none;
+            }
+
+            .btn-yes:active {
+                transform: scale(1.05);
+                box-shadow: 
+                    0 12px 35px rgba(201, 24, 74, 0.5),
+                    0 0 0 4px var(--gold),
+                    0 0 50px rgba(201, 24, 74, 0.3);
+            }
+
+            .btn-no:hover {
+                transform: none;
+                opacity: 1;
+            }
+
+            .btn-no:active {
+                transform: scale(0.95);
+                opacity: 0.8;
+            }
+
+            .try-again-btn:hover {
+                transform: none;
+            }
+
+            .try-again-btn:active {
+                transform: scale(1.02);
+                box-shadow: 0 5px 20px rgba(212, 175, 55, 0.4);
+            }
+        }
+
+        /* Landscape mobile */
+        @media (max-height: 500px) and (orientation: landscape) {
+            .container {
+                padding: 0.5rem 1rem;
+                justify-content: flex-start;
+            }
+
+            .title {
+                font-size: 1.3rem;
+                margin-bottom: 0.5rem;
+            }
+
+            .card {
+                padding: 1rem 1.5rem;
+                display: flex;
+                flex-direction: row;
+                align-items: center;
+                gap: 1.5rem;
+                max-width: 100%;
+            }
+
+            .illustration-container {
+                margin-bottom: 0;
+                flex-shrink: 0;
+            }
+
+            .xaden-illustration {
+                width: 140px;
+                height: 170px;
+            }
+
+            .heart-decoration {
+                display: none;
+            }
+
+            .question {
+                margin-bottom: 1rem;
+                font-size: 1.1rem;
+            }
+
+            .question .name {
+                font-size: 1.4rem;
+            }
+
+            .buttons-container {
+                flex-direction: row;
+                gap: 0.75rem;
+            }
+
+            .btn {
+                padding: 0.7rem 1.5rem;
+                font-size: 1rem;
+                min-height: 44px;
+            }
+
+            .signature {
+                margin-top: 0.75rem;
+            }
+
+            .corner-decor {
+                display: none;
+            }
+
+            .response-yes {
+                font-size: 1.1rem;
+            }
+
+            .response-yes .big-heart svg {
+                width: 45px;
+                height: 45px;
+            }
+
+            .sparkle-row {
+                margin: 0.5rem 0;
+            }
+
+            .sparkle-row svg {
+                width: 25px;
+                height: 25px;
             }
         }
     </style>
@@ -682,8 +984,8 @@
                     <div class="big-heart" style="color: var(--soft-rose);">
                         <svg><use href="#heart-classic"/></svg>
                     </div>
-                    You've made me the happiest!<br>
-                    <em>Happy Valentine's Day, my love!</em>
+                    There's nowhere in existence you could go that I wouldn't find you, Jaylene.<br>
+                    <em>Happy Valentine's Day, my love.</em>
                     <div class="sparkle-row">
                         <svg class="sparkle" style="color: var(--gold);"><use href="#sparkle"/></svg>
                         <svg style="color: var(--blush);"><use href="#heart-double"/></svg>
@@ -806,17 +1108,72 @@
         let noClickCount = 0;
         const noBtn = document.querySelector('.btn-no');
         
-        noBtn.addEventListener('mouseover', function() {
-            noClickCount++;
-            if (noClickCount > 2 && noClickCount < 6) {
-                const randomX = (Math.random() - 0.5) * 100;
-                const randomY = (Math.random() - 0.5) * 50;
-                this.style.transform = `translate(${randomX}px, ${randomY}px) scale(0.8)`;
-            } else if (noClickCount >= 6) {
-                this.style.transform = 'scale(0.7)';
-                this.style.opacity = '0.5';
+        // Check if touch device
+        const isTouchDevice = ('ontouchstart' in window) || (navigator.maxTouchPoints > 0);
+
+        if (!isTouchDevice) {
+            // Desktop: hover effect
+            noBtn.addEventListener('mouseover', function() {
+                noClickCount++;
+                if (noClickCount > 2 && noClickCount < 6) {
+                    const randomX = (Math.random() - 0.5) * 100;
+                    const randomY = (Math.random() - 0.5) * 50;
+                    this.style.transform = `translate(${randomX}px, ${randomY}px) scale(0.8)`;
+                } else if (noClickCount >= 6) {
+                    this.style.transform = 'scale(0.7)';
+                    this.style.opacity = '0.5';
+                }
+            });
+        } else {
+            // Mobile: tap effect - button shrinks and shows message
+            let noTapCount = 0;
+            noBtn.addEventListener('click', function(e) {
+                noTapCount++;
+                if (noTapCount < 3) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    
+                    // Shake animation
+                    this.style.animation = 'shake 0.5s ease';
+                    setTimeout(() => {
+                        this.style.animation = '';
+                    }, 500);
+                    
+                    // Change text based on taps
+                    if (noTapCount === 1) {
+                        this.textContent = 'Are you sure?';
+                    } else if (noTapCount === 2) {
+                        this.textContent = 'Really? 🥺';
+                        this.style.transform = 'scale(0.9)';
+                        this.style.opacity = '0.7';
+                    }
+                } else {
+                    // Allow the click to go through on 3rd tap
+                    sayNo();
+                }
+            });
+        }
+
+        // Add shake animation for mobile
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes shake {
+                0%, 100% { transform: translateX(0); }
+                20% { transform: translateX(-10px); }
+                40% { transform: translateX(10px); }
+                60% { transform: translateX(-10px); }
+                80% { transform: translateX(10px); }
             }
-        });
+        `;
+        document.head.appendChild(style);
+
+        // Reduce floating hearts on mobile for performance
+        if (isTouchDevice) {
+            const hearts = document.querySelectorAll('.floating-heart');
+            hearts.forEach((heart, index) => {
+                if (index > 15) heart.remove();
+            });
+        }
     </script>
 </body>
 </html>
