@@ -1,0 +1,822 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jaylene, Will You Be My Valentine?</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --deep-rose: #8B0A1A;
+            --soft-rose: #C9184A;
+            --blush: #FF758F;
+            --champagne: #FFE5EC;
+            --gold: #D4AF37;
+            --cream: #FFF8F0;
+            --dark: #1A0A0F;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            min-height: 100vh;
+            font-family: 'Cormorant Garamond', serif;
+            background: linear-gradient(135deg, var(--dark) 0%, #2D0A14 50%, var(--deep-rose) 100%);
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        /* Floating Hearts Background */
+        .hearts-container {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .floating-heart {
+            position: absolute;
+            opacity: 0.4;
+            animation: floatUp 15s infinite ease-in-out;
+            filter: drop-shadow(0 0 8px currentColor);
+        }
+
+        .floating-heart svg {
+            width: 100%;
+            height: 100%;
+        }
+
+        @keyframes floatUp {
+            0% {
+                transform: translateY(100vh) rotate(0deg) scale(0.5);
+                opacity: 0;
+            }
+            10% {
+                opacity: 0.5;
+            }
+            90% {
+                opacity: 0.5;
+            }
+            100% {
+                transform: translateY(-100vh) rotate(360deg) scale(1.2);
+                opacity: 0;
+            }
+        }
+
+        /* Main Container */
+        .container {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Title */
+        .title {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(2rem, 5vw, 3.5rem);
+            color: var(--champagne);
+            text-align: center;
+            margin-bottom: 1rem;
+            text-shadow: 0 0 30px rgba(201, 24, 74, 0.5);
+            animation: fadeInDown 1s ease-out;
+            letter-spacing: 0.05em;
+        }
+
+        .title span {
+            color: var(--gold);
+            font-style: italic;
+        }
+
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Main Card */
+        .card {
+            background: linear-gradient(145deg, rgba(255, 248, 240, 0.95), rgba(255, 229, 236, 0.9));
+            border-radius: 30px;
+            padding: 3rem 2.5rem;
+            max-width: 500px;
+            width: 100%;
+            box-shadow: 
+                0 25px 80px rgba(0, 0, 0, 0.4),
+                0 0 100px rgba(201, 24, 74, 0.3),
+                inset 0 1px 0 rgba(255, 255, 255, 0.8);
+            position: relative;
+            animation: cardAppear 1.2s ease-out;
+            border: 2px solid var(--gold);
+        }
+
+        @keyframes cardAppear {
+            from {
+                opacity: 0;
+                transform: scale(0.8) translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1) translateY(0);
+            }
+        }
+
+        /* Decorative corners */
+        .corner-decor {
+            position: absolute;
+            width: 30px;
+            height: 30px;
+            color: var(--gold);
+            opacity: 0.7;
+        }
+
+        .corner-decor.top-left {
+            top: 15px;
+            left: 20px;
+        }
+
+        .corner-decor.bottom-right {
+            bottom: 15px;
+            right: 20px;
+            transform: rotate(180deg);
+        }
+
+        /* Heart Display */
+        .heart-display {
+            width: 100%;
+            height: 200px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 2rem;
+            position: relative;
+        }
+
+        .main-heart {
+            width: 120px;
+            height: 120px;
+            color: var(--soft-rose);
+            animation: mainHeartBeat 1.5s ease-in-out infinite;
+            filter: drop-shadow(0 10px 30px rgba(201, 24, 74, 0.4));
+            position: relative;
+            z-index: 2;
+        }
+
+        .main-heart svg {
+            width: 100%;
+            height: 100%;
+        }
+
+        @keyframes mainHeartBeat {
+            0%, 100% { transform: scale(1); }
+            15% { transform: scale(1.15); }
+            30% { transform: scale(1); }
+            45% { transform: scale(1.1); }
+            60% { transform: scale(1); }
+        }
+
+        .orbit-heart {
+            position: absolute;
+            animation: orbit 8s linear infinite;
+        }
+
+        .orbit-heart svg {
+            width: 100%;
+            height: 100%;
+        }
+
+        .orbit-1 {
+            width: 35px;
+            height: 35px;
+            color: var(--blush);
+            animation-delay: 0s;
+        }
+
+        .orbit-2 {
+            width: 28px;
+            height: 28px;
+            color: var(--deep-rose);
+            animation-delay: -1.6s;
+        }
+
+        .orbit-3 {
+            width: 32px;
+            height: 32px;
+            color: var(--gold);
+            animation-delay: -3.2s;
+        }
+
+        .orbit-4 {
+            width: 25px;
+            height: 25px;
+            color: var(--soft-rose);
+            animation-delay: -4.8s;
+        }
+
+        .orbit-5 {
+            width: 30px;
+            height: 30px;
+            color: var(--blush);
+            animation-delay: -6.4s;
+        }
+
+        @keyframes orbit {
+            0% {
+                transform: rotate(0deg) translateX(90px) rotate(0deg) scale(0.8);
+                opacity: 0.6;
+            }
+            50% {
+                transform: rotate(180deg) translateX(90px) rotate(-180deg) scale(1.1);
+                opacity: 1;
+            }
+            100% {
+                transform: rotate(360deg) translateX(90px) rotate(-360deg) scale(0.8);
+                opacity: 0.6;
+            }
+        }
+
+        /* Question */
+        .question {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(1.5rem, 4vw, 2.2rem);
+            color: var(--deep-rose);
+            text-align: center;
+            margin-bottom: 2rem;
+            line-height: 1.4;
+            animation: fadeIn 1.5s ease-out 0.5s both;
+        }
+
+        .question .name {
+            display: block;
+            font-size: clamp(2rem, 5vw, 3rem);
+            font-style: italic;
+            color: var(--soft-rose);
+            margin-bottom: 0.5rem;
+            text-shadow: 2px 2px 4px rgba(139, 10, 26, 0.2);
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        /* Buttons Container */
+        .buttons-container {
+            display: flex;
+            gap: 1.5rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            animation: fadeInUp 1.5s ease-out 0.8s both;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Button Styles */
+        .btn {
+            padding: 1rem 2.5rem;
+            font-family: 'Playfair Display', serif;
+            font-size: 1.3rem;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            position: relative;
+            overflow: hidden;
+            font-weight: 600;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .btn .btn-heart {
+            width: 18px;
+            height: 18px;
+            flex-shrink: 0;
+        }
+
+        .btn-yes {
+            background: linear-gradient(135deg, var(--soft-rose), var(--deep-rose));
+            color: var(--cream);
+            box-shadow: 
+                0 8px 25px rgba(201, 24, 74, 0.4),
+                0 0 0 3px var(--gold);
+        }
+
+        .btn-yes:hover {
+            transform: scale(1.1);
+            box-shadow: 
+                0 12px 35px rgba(201, 24, 74, 0.5),
+                0 0 0 4px var(--gold),
+                0 0 50px rgba(201, 24, 74, 0.3);
+        }
+
+        .btn-yes::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+            transition: left 0.5s;
+        }
+
+        .btn-yes:hover::before {
+            left: 100%;
+        }
+
+        .btn-no {
+            background: var(--cream);
+            color: var(--deep-rose);
+            border: 2px solid var(--blush);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .btn-no:hover {
+            transform: scale(0.9);
+            opacity: 0.7;
+        }
+
+        /* Response Messages */
+        .response {
+            display: none;
+            text-align: center;
+            animation: celebrateIn 0.8s ease-out;
+        }
+
+        @keyframes celebrateIn {
+            0% {
+                opacity: 0;
+                transform: scale(0.5);
+            }
+            50% {
+                transform: scale(1.1);
+            }
+            100% {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        .response-yes {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            color: var(--deep-rose);
+            line-height: 1.6;
+        }
+
+        .response-yes .big-heart {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 1.5rem auto;
+            animation: heartBeat 1s ease-in-out infinite;
+        }
+
+        .response-yes .big-heart svg {
+            width: 80px;
+            height: 80px;
+        }
+
+        .sparkle-row {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 1rem;
+            margin: 1rem 0;
+        }
+
+        .sparkle-row svg {
+            width: 40px;
+            height: 40px;
+        }
+
+        .sparkle-row .sparkle {
+            width: 25px;
+            height: 25px;
+            animation: sparkle 1.5s ease-in-out infinite;
+        }
+
+        @keyframes sparkle {
+            0%, 100% { opacity: 0.5; transform: scale(0.8) rotate(0deg); }
+            50% { opacity: 1; transform: scale(1.2) rotate(180deg); }
+        }
+
+        @keyframes heartBeat {
+            0%, 100% { transform: scale(1); }
+            25% { transform: scale(1.1); }
+            50% { transform: scale(1); }
+            75% { transform: scale(1.15); }
+        }
+
+        .response-no {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.3rem;
+            color: var(--dark);
+        }
+
+        .sad-face {
+            font-size: 2.5rem;
+            display: block;
+            margin: 0.5rem 0;
+        }
+
+        .try-again-btn {
+            margin-top: 1.5rem;
+            padding: 0.8rem 2rem;
+            background: var(--gold);
+            color: var(--dark);
+            font-family: 'Playfair Display', serif;
+            font-size: 1rem;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .try-again-btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 5px 20px rgba(212, 175, 55, 0.4);
+        }
+
+        /* Confetti Animation */
+        .confetti-container {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 100;
+        }
+
+        .confetti {
+            position: absolute;
+            animation: confettiFall 3s ease-out forwards;
+        }
+
+        .confetti svg {
+            width: 100%;
+            height: 100%;
+        }
+
+        @keyframes confettiFall {
+            0% {
+                transform: translateY(-100vh) rotate(0deg);
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(100vh) rotate(720deg);
+                opacity: 0;
+            }
+        }
+
+        /* Signature */
+        .signature {
+            margin-top: 2rem;
+            font-family: 'Playfair Display', serif;
+            font-style: italic;
+            color: var(--champagne);
+            opacity: 0.7;
+            text-align: center;
+            animation: fadeIn 2s ease-out 1.5s both;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+        }
+
+        .signature svg {
+            width: 20px;
+            height: 20px;
+        }
+
+        /* Responsive */
+        @media (max-width: 480px) {
+            .card {
+                padding: 2rem 1.5rem;
+            }
+
+            .heart-display {
+                height: 160px;
+            }
+
+            .main-heart {
+                width: 90px;
+                height: 90px;
+            }
+
+            .buttons-container {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .btn {
+                width: 100%;
+                justify-content: center;
+            }
+
+            @keyframes orbit {
+                0% {
+                    transform: rotate(0deg) translateX(70px) rotate(0deg) scale(0.8);
+                    opacity: 0.6;
+                }
+                50% {
+                    transform: rotate(180deg) translateX(70px) rotate(-180deg) scale(1.1);
+                    opacity: 1;
+                }
+                100% {
+                    transform: rotate(360deg) translateX(70px) rotate(-360deg) scale(0.8);
+                    opacity: 0.6;
+                }
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- SVG Definitions -->
+    <svg style="display: none;">
+        <defs>
+            <!-- Classic Heart -->
+            <symbol id="heart-classic" viewBox="0 0 32 32">
+                <path d="M16 28C16 28 3 18 3 10C3 5 7 2 11 2C13.5 2 15.5 3.5 16 5C16.5 3.5 18.5 2 21 2C25 2 29 5 29 10C29 18 16 28 16 28Z" fill="currentColor"/>
+            </symbol>
+            
+            <!-- Outline Heart -->
+            <symbol id="heart-outline" viewBox="0 0 32 32">
+                <path d="M16 28C16 28 3 18 3 10C3 5 7 2 11 2C13.5 2 15.5 3.5 16 5C16.5 3.5 18.5 2 21 2C25 2 29 5 29 10C29 18 16 28 16 28Z" fill="none" stroke="currentColor" stroke-width="2"/>
+            </symbol>
+            
+            <!-- Double Heart -->
+            <symbol id="heart-double" viewBox="0 0 40 32">
+                <path d="M12 24C12 24 2 16 2 10C2 6 5 3 8 3C10 3 11.5 4 12 5.5C12.5 4 14 3 16 3C19 3 22 6 22 10C22 16 12 24 12 24Z" fill="currentColor" opacity="0.6"/>
+                <path d="M28 24C28 24 18 16 18 10C18 6 21 3 24 3C26 3 27.5 4 28 5.5C28.5 4 30 3 32 3C35 3 38 6 38 10C38 16 28 24 28 24Z" fill="currentColor"/>
+            </symbol>
+            
+            <!-- Lace Heart -->
+            <symbol id="heart-lace" viewBox="0 0 32 32">
+                <path d="M16 28C16 28 3 18 3 10C3 5 7 2 11 2C13.5 2 15.5 3.5 16 5C16.5 3.5 18.5 2 21 2C25 2 29 5 29 10C29 18 16 28 16 28Z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+                <path d="M16 24C16 24 6 16 6 10C6 6.5 9 4 11.5 4C13 4 14.5 5 15 6C15.5 5 17 4 18.5 4C21 4 24 6.5 24 10C24 16 16 24 16 24Z" fill="none" stroke="currentColor" stroke-width="1" stroke-dasharray="2,2"/>
+                <circle cx="11" cy="9" r="2" fill="currentColor" opacity="0.5"/>
+                <circle cx="21" cy="9" r="2" fill="currentColor" opacity="0.5"/>
+            </symbol>
+            
+            <!-- Geometric Heart -->
+            <symbol id="heart-geometric" viewBox="0 0 32 32">
+                <polygon points="16,28 3,12 8,4 16,8 24,4 29,12" fill="currentColor"/>
+            </symbol>
+            
+            <!-- Swirl Heart -->
+            <symbol id="heart-swirl" viewBox="0 0 32 32">
+                <path d="M16 28C16 28 3 18 3 10C3 5 7 2 11 2C13.5 2 15.5 3.5 16 5C16.5 3.5 18.5 2 21 2C25 2 29 5 29 10C29 18 16 28 16 28Z" fill="currentColor"/>
+                <path d="M12 10 Q14 8, 16 12 Q18 16, 14 18 Q10 20, 12 14 Q14 10, 18 12" fill="none" stroke="rgba(255,255,255,0.4)" stroke-width="1.5"/>
+            </symbol>
+            
+            <!-- Arrow Heart -->
+            <symbol id="heart-arrow" viewBox="0 0 40 32">
+                <path d="M20 28C20 28 7 18 7 10C7 5 11 2 15 2C17.5 2 19.5 3.5 20 5C20.5 3.5 22.5 2 25 2C29 2 33 5 33 10C33 18 20 28 20 28Z" fill="currentColor"/>
+                <line x1="2" y1="18" x2="38" y2="10" stroke="rgba(255,255,255,0.6)" stroke-width="2"/>
+                <polygon points="38,10 32,8 33,14" fill="rgba(255,255,255,0.6)"/>
+            </symbol>
+            
+            <!-- Sparkle -->
+            <symbol id="sparkle" viewBox="0 0 24 24">
+                <path d="M12 0L14 10L24 12L14 14L12 24L10 14L0 12L10 10L12 0Z" fill="currentColor"/>
+            </symbol>
+            
+            <!-- Rose -->
+            <symbol id="rose" viewBox="0 0 32 32">
+                <ellipse cx="16" cy="12" rx="8" ry="6" fill="currentColor"/>
+                <ellipse cx="12" cy="14" rx="5" ry="4" fill="currentColor" opacity="0.8"/>
+                <ellipse cx="20" cy="14" rx="5" ry="4" fill="currentColor" opacity="0.8"/>
+                <ellipse cx="16" cy="16" rx="4" ry="3" fill="currentColor" opacity="0.6"/>
+                <path d="M16 18 Q16 24, 14 28 M16 18 Q16 24, 18 28" stroke="#2d5a27" stroke-width="2" fill="none"/>
+                <path d="M14 22 Q10 20, 8 22 M18 24 Q22 22, 24 24" stroke="#2d5a27" stroke-width="1.5" fill="none"/>
+            </symbol>
+            
+            <!-- Broken Heart -->
+            <symbol id="heart-broken" viewBox="0 0 32 32">
+                <path d="M16 28C16 28 3 18 3 10C3 5 7 2 11 2C13.5 2 15.5 3.5 16 5L14 12L18 16L15 22L16 28Z" fill="currentColor"/>
+                <path d="M16 28L17 22L14 16L18 12L16 5C16.5 3.5 18.5 2 21 2C25 2 29 5 29 10C29 18 16 28 16 28Z" fill="currentColor" opacity="0.7"/>
+            </symbol>
+        </defs>
+    </svg>
+
+    <!-- Floating Hearts Background -->
+    <div class="hearts-container" id="heartsContainer"></div>
+
+    <!-- Confetti Container -->
+    <div class="confetti-container" id="confettiContainer"></div>
+
+    <!-- Main Content -->
+    <div class="container">
+        <h1 class="title">A Special Question for <span>You</span></h1>
+
+        <div class="card">
+            <!-- Corner Decorations -->
+            <div class="corner-decor top-left">
+                <svg><use href="#heart-lace"/></svg>
+            </div>
+            <div class="corner-decor bottom-right">
+                <svg><use href="#heart-lace"/></svg>
+            </div>
+
+            <!-- Decorative Heart Display -->
+            <div class="heart-display">
+                <div class="main-heart">
+                    <svg><use href="#heart-classic"/></svg>
+                </div>
+                <div class="orbit-heart orbit-1"><svg><use href="#heart-outline"/></svg></div>
+                <div class="orbit-heart orbit-2"><svg><use href="#heart-double"/></svg></div>
+                <div class="orbit-heart orbit-3"><svg><use href="#heart-lace"/></svg></div>
+                <div class="orbit-heart orbit-4"><svg><use href="#heart-geometric"/></svg></div>
+                <div class="orbit-heart orbit-5"><svg><use href="#heart-swirl"/></svg></div>
+            </div>
+
+            <!-- Question Section -->
+            <div id="questionSection">
+                <div class="question">
+                    <span class="name">Jaylene,</span>
+                    Will you be my Valentine?
+                </div>
+
+                <div class="buttons-container">
+                    <button class="btn btn-yes" onclick="sayYes()">
+                        Yes 
+                        <svg class="btn-heart"><use href="#heart-classic"/></svg>
+                    </button>
+                    <button class="btn btn-no" onclick="sayNo()">No</button>
+                </div>
+            </div>
+
+            <!-- Response Section -->
+            <div class="response" id="yesResponse">
+                <div class="response-yes">
+                    <div class="big-heart" style="color: var(--soft-rose);">
+                        <svg><use href="#heart-classic"/></svg>
+                    </div>
+                    You've made me the happiest!<br>
+                    <em>Happy Valentine's Day, my love!</em>
+                    <div class="sparkle-row">
+                        <svg class="sparkle" style="color: var(--gold);"><use href="#sparkle"/></svg>
+                        <svg style="color: var(--blush);"><use href="#heart-double"/></svg>
+                        <svg class="sparkle" style="color: var(--gold);"><use href="#sparkle"/></svg>
+                    </div>
+                </div>
+            </div>
+
+            <div class="response" id="noResponse">
+                <div class="response-no">
+                    <div style="color: var(--blush); width: 50px; height: 50px; margin: 0 auto;">
+                        <svg><use href="#heart-broken"/></svg>
+                    </div>
+                    Are you sure?<br>
+                    <em>Maybe give it another thought?</em>
+                    <button class="try-again-btn" onclick="reset()">Let me reconsider...</button>
+                </div>
+            </div>
+        </div>
+
+        <p class="signature">
+            <svg style="color: var(--blush);"><use href="#heart-outline"/></svg>
+            With all my love
+            <svg style="color: var(--blush);"><use href="#heart-outline"/></svg>
+        </p>
+    </div>
+
+    <script>
+        // Heart types for variety
+        const heartTypes = ['heart-classic', 'heart-outline', 'heart-double', 'heart-lace', 'heart-geometric', 'heart-swirl', 'heart-arrow'];
+        const heartColors = ['#C9184A', '#FF758F', '#8B0A1A', '#D4AF37', '#FFE5EC'];
+
+        // Create floating hearts
+        function createFloatingHearts() {
+            const container = document.getElementById('heartsContainer');
+            
+            for (let i = 0; i < 25; i++) {
+                const heart = document.createElement('div');
+                heart.className = 'floating-heart';
+                
+                const heartType = heartTypes[Math.floor(Math.random() * heartTypes.length)];
+                const heartColor = heartColors[Math.floor(Math.random() * heartColors.length)];
+                const size = 20 + Math.random() * 30;
+                
+                heart.innerHTML = `<svg style="color: ${heartColor};"><use href="#${heartType}"/></svg>`;
+                heart.style.left = Math.random() * 100 + '%';
+                heart.style.width = size + 'px';
+                heart.style.height = size + 'px';
+                heart.style.animationDelay = Math.random() * 15 + 's';
+                heart.style.animationDuration = (12 + Math.random() * 10) + 's';
+                container.appendChild(heart);
+            }
+        }
+
+        // Create confetti
+        function createConfetti() {
+            const container = document.getElementById('confettiContainer');
+            container.style.display = 'block';
+            container.innerHTML = '';
+            
+            const shapes = ['heart-classic', 'heart-outline', 'heart-geometric', 'sparkle', 'rose'];
+            
+            for (let i = 0; i < 60; i++) {
+                const confetti = document.createElement('div');
+                confetti.className = 'confetti';
+                
+                const shape = shapes[Math.floor(Math.random() * shapes.length)];
+                const color = heartColors[Math.floor(Math.random() * heartColors.length)];
+                const size = 15 + Math.random() * 25;
+                
+                confetti.innerHTML = `<svg style="color: ${color};"><use href="#${shape}"/></svg>`;
+                confetti.style.left = Math.random() * 100 + '%';
+                confetti.style.width = size + 'px';
+                confetti.style.height = size + 'px';
+                confetti.style.animationDelay = Math.random() * 2 + 's';
+                container.appendChild(confetti);
+            }
+        }
+
+        // Yes response
+        function sayYes() {
+            document.getElementById('questionSection').style.display = 'none';
+            document.getElementById('yesResponse').style.display = 'block';
+            createConfetti();
+            
+            // Add extra celebration hearts
+            for (let i = 0; i < 15; i++) {
+                setTimeout(() => {
+                    const heart = document.createElement('div');
+                    heart.className = 'floating-heart';
+                    const heartType = heartTypes[Math.floor(Math.random() * heartTypes.length)];
+                    heart.innerHTML = `<svg style="color: ${heartColors[Math.floor(Math.random() * heartColors.length)]};"><use href="#${heartType}"/></svg>`;
+                    heart.style.left = Math.random() * 100 + '%';
+                    heart.style.width = '35px';
+                    heart.style.height = '35px';
+                    heart.style.animationDuration = '6s';
+                    heart.style.opacity = '0.8';
+                    document.getElementById('heartsContainer').appendChild(heart);
+                }, i * 150);
+            }
+        }
+
+        // No response
+        function sayNo() {
+            document.getElementById('questionSection').style.display = 'none';
+            document.getElementById('noResponse').style.display = 'block';
+        }
+
+        // Reset
+        function reset() {
+            document.getElementById('questionSection').style.display = 'block';
+            document.getElementById('noResponse').style.display = 'none';
+            document.getElementById('yesResponse').style.display = 'none';
+        }
+
+        // Initialize
+        createFloatingHearts();
+
+        // Make No button run away (playful interaction)
+        let noClickCount = 0;
+        const noBtn = document.querySelector('.btn-no');
+        
+        noBtn.addEventListener('mouseover', function() {
+            noClickCount++;
+            if (noClickCount > 2 && noClickCount < 6) {
+                const randomX = (Math.random() - 0.5) * 100;
+                const randomY = (Math.random() - 0.5) * 50;
+                this.style.transform = `translate(${randomX}px, ${randomY}px) scale(0.8)`;
+            } else if (noClickCount >= 6) {
+                this.style.transform = 'scale(0.7)';
+                this.style.opacity = '0.5';
+            }
+        });
+    </script>
+</body>
+</html>
